@@ -5,6 +5,8 @@ import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
 import { getOrCreateConversation } from "@/lib/conversation";
 
+import { ChatHeader } from "@/components/chat/chat-header";
+
 interface Props {
    params: {
       memberId: string;
@@ -28,7 +30,16 @@ const MemberIdPage = async ({ params }: Props) => {
    const { memberOne, memberTwo } = conversation;
    const otherMember = memberOne.profileId === profile.id ? memberTwo : memberOne;
 
-   return <div>MemberIdPage</div>;
+   return (
+      <div className="bg-white dark:bg-[#313338] flex flex-col h-full">
+         <ChatHeader
+            imageUrl={otherMember.profile.imageUrl}
+            name={otherMember.profile.name}
+            serverId={params.serverId}
+            type="conversation"
+         />
+      </div>
+   );
 };
 
 export default MemberIdPage;
