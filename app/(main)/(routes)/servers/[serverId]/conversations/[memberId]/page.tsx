@@ -27,6 +27,7 @@ const MemberIdPage = async ({ params }: Props) => {
 
    const { memberOne, memberTwo } = conversation;
    const otherMember = memberOne.profileId === profile.id ? memberTwo : memberOne;
+   const a = "a";
 
    return <div>MemberIdPage</div>;
 };
