@@ -29,8 +29,11 @@ interface Props {
 
 export const ServerSearch = ({ data }: Props) => {
    const [open, setOpen] = useState(false);
+   const [tipoDispositivo, setTipoDispositivo] = useState("");
    const router = useRouter();
    const params = useParams();
+
+   useEffect(() => setTipoDispositivo(navigator.userAgent.includes("Mac OS") ? "⌘" : "CTL"), []);
 
    useEffect(() => {
       const down = (e: globalThis.KeyboardEvent) => {
@@ -50,7 +53,6 @@ export const ServerSearch = ({ data }: Props) => {
       if (type === "channel") return router.push(`/servers/${params?.serverId}/channels/${id}`);
    };
 
-   const tipoDispositivo = navigator.userAgent.includes("Mac OS") ? "⌘" : "CTL";
    return (
       <>
          <button
